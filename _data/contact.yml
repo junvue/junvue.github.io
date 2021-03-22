@@ -4,16 +4,17 @@
   type: github
   icon: 'fab fa-github-alt'
 -
-  type: twitter
-  icon: 'fab fa-twitter'
+  type: facebook
+  icon: 'fab fa-facebook'
+  url: 'https://www.facebook.com/junny970'
+-
+  type: instagram
+  icon: 'fab fa-instagram'
+  url: 'https://www.instagram.com/juns_970'
 -
   type: email
   icon: 'fas fa-envelope'
   noblank: true            # open link in current tab
--
-  type: rss
-  icon: 'fas fa-rss'
-  noblank: true
 
 # Uncomment and complete the url below to enable more contact options
 # -
