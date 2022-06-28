@@ -28,32 +28,31 @@
   {% endcapture %}
 
   {% if site.img_cdn %}
-    {% assign properties = 'og:image,twitter:image' | split: ',' %}
+    {% if site.img_cdn contains '//' %}
+      {% capture og %}
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="{{ site.img_cdn }}" />
+      {% endcapture %}
 
-    {% for prop in properties %}
-      {% if site.img_cdn contains '//' %}
-        {% capture target %}
-          <meta property="{{ prop }}" content="{{ site.url }}" />
-        {% endcapture %}
-        {% capture replacement %}
-          <meta property="{{ prop }}" content="{{ site.img_cdn }}" />
-        {% endcapture %}
-      {% else %}
-        <!-- `site.img_cdn` is a local file path -->
-        {% capture target %}
-          <meta property="{{ prop }}" content="{{ site.url }}{{ site.baseurl }}" />
-        {% endcapture %}
-        {% assign replacement = target | append: site.img_cdn %}
-      {% endif %}
+      {% capture first_target %}<meta property="og:description" content="{% endcapture %}
+      {% capture last_target %}<meta name="description" content="{% endcapture %}
+      {% capture rm_target %}" />{% endcapture %}
 
-      {% assign seo_tags = seo_tags | append: replacement %}
-    {% endfor %}
+      {% capture description %}
+        {{ seo_tags | split: first_target | first | split: last_target | last }}
+      {% endcapture %}
 
-    {% capture card %}
-      <meta property="twitter:card" content="summary_large_image" />
-    {% endcapture %}
+      {% assign description = description | strip | remove: rm_target %}
 
-    {% assign seo_tags = seo_tags | append: card %}
+      {% capture twitter %}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:image" content="{{ site.img_cdn }}" />
+        <meta property="twitter:description" content="{{ description }}" />
+      {% endcapture %}
+
+      {% assign seo_tags = seo_tags | replace: '<meta property="og:type" content="website" />', og %}
+      {% assign seo_tags = seo_tags | replace: '<meta name="twitter:card" content="summary" />', twitter %}
+    {% endif %}
   {% endif %}
 
   {{ seo_tags }}
