@@ -706,7 +706,7 @@ $sidebar-display: "sidebar-display";
       font-weight: 900;
       font-size: 1.5rem;
       letter-spacing: 0.5px;
-      color: rgba(134, 133, 133, 99%);
+      color: white;
     }
   }
 
@@ -765,7 +765,7 @@ $sidebar-display: "sidebar-display";
           visibility: hidden;
           content: "";
           position: relative;
-          right: 1px;
+          right: 1.5px;
           width: $cursor-width;
           height: $tab-cursor-height;
           border-radius: 1px;
@@ -891,6 +891,7 @@ $sidebar-display: "sidebar-display";
   transition: top 0.2s ease-in-out;
   z-index: 50;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.05);
   background-color: var(--topbar-wrapper-bg);
 
   [data-topbar-visible=false] & {
@@ -1563,7 +1564,7 @@ $sidebar-display: "sidebar-display";
     width: $sidebar-width-large;
 
     .profile-wrapper {
-      margin-top: 4rem;
+      margin-top: 3.5rem;
       margin-bottom: 1rem;
 
       &.text-center {
@@ -1571,15 +1572,15 @@ $sidebar-display: "sidebar-display";
       }
 
       %profile-ml {
-        margin-left: 4.5rem;
+        margin-left: 4rem;
       }
 
       #avatar {
         @extend %profile-ml;
 
-        > a {
-          width: 6.2rem;
-          height: 6.2rem;
+        > a { // avatar size
+          width: 7rem;
+          height: 7rem;
 
           &.mx-auto {
             margin-left: 0 !important;
@@ -1593,6 +1594,10 @@ $sidebar-display: "sidebar-display";
         a {
           font-size: 1.7rem;
           letter-spacing: 1px;
+        }
+
+        &.mt-3 {
+          margin-top: 2rem !important;
         }
       }
 
@@ -1636,7 +1641,7 @@ $sidebar-display: "sidebar-display";
       padding-left: 3.5rem;
       width: 100%;
 
-      $icon-block-size: 2rem;
+      $icon-block-size: 1.2rem;
 
       &.justify-content-center {
         -webkit-box-pack: start !important;
@@ -1655,10 +1660,11 @@ $sidebar-display: "sidebar-display";
 
       i {
         background-color: var(--sidebar-btn-bg);
-        font-size: 1rem;
+        font-size: 1.3rem; // icon size
         width: $icon-block-size;
         height: $icon-block-size;
         border-radius: 50%;
+        // border: 0.1rem solid rgba(255, 255, 255, 0.5);
         position: relative;
 
         &::before {

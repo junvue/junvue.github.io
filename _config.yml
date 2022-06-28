@@ -23,10 +23,12 @@ timezone: Asia/Seoul
 
 title: Junvue                          # the main title
 
-tagline: 기억도 해두어야 하지만 기록도 해두어야 한다.   # it will display as the sub-title
+tagline: 기억도 해야 하지만,<br/>기록도 해두어야 한다.   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  어떤 개발자의 생각, 요리, 캠핑, 연주, 맛집이 다 담겨있는 기술 블로그 : 기억도 해야 하지만, 기록도 해두어야 한다.
+
+image: /assets/img/avatar.png
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://junvue.github.io'
@@ -35,7 +37,13 @@ github:
   username: junvue             # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  card: summary_large_image
+
+facebook:
+  username: junny970
+
+instagram:
+  username: juns_970
 
 social:
   # Change to your full name.
@@ -44,10 +52,9 @@ social:
   email: junny970@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
     - https://github.com/junvue       # change to your github homepage
-    - https://www.facebook.com/junny970
-    - https://www.instagram.com/juns_970
+    - https://facebook.com/junny970
+    - https://instagram.com/juns_970
     
     # - https://www.linkedin.com/in/username
 
@@ -81,10 +88,10 @@ theme_mode: light # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+img_cdn: https://repository-images.githubusercontent.com/507834193/4ada4fdf-d66d-45d0-884b-63ed93748e9d
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://avatars.githubusercontent.com/u/42637065?v=4
+avatar: /assets/img/avatar.png
 
 # boolean type, the global switch for ToC in posts.
 toc: true

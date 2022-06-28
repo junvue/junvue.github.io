@@ -10,8 +10,6 @@
           {% capture avatar_url %}
             {% if site.avatar contains '://' %}
               {{ site.avatar }}
-            {% elsif site.img_cdn != empty and site.img_cdn %}
-              {{ site.avatar | prepend: site.img_cdn }}
             {% else %}
               {{ site.avatar | relative_url }}
             {% endif %}
@@ -24,7 +22,7 @@
     <div class="site-title mt-3">
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </div>
-    <div class="site-subtitle font-italic">{{ site.tagline }}</div>
+    <div class="site-subtitle">{{ site.tagline }}</div>
 
   </div><!-- .profile-wrapper -->
 
@@ -67,8 +65,10 @@
       {% capture url %}
         {%- if entry.type == 'github' -%}
           https://github.com/{{ site.github.username }}
-        {%- elsif entry.type == 'twitter' -%}
-          https://twitter.com/{{ site.twitter.username }}
+        {%- elsif entry.type == 'facebook' -%}
+          https://facebook.com/{{ site.facebook.username }}
+        {%- elsif entry.type == 'instagram' -%}
+          https://instagram.com/{{ site.instagram.username }}
         {%- elsif entry.type == 'email' -%}
           {% assign email = site.social.email | split: '@' %}
           javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')

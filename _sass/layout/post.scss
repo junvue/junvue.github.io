@@ -50,17 +50,21 @@ img.preview-img {
 }
 
 .post-tail-wrapper {
-  margin-top: 6rem;
+  margin-top: 4rem;
   border-bottom: 1px double var(--main-border-color);
   font-size: 0.85rem;
 
   .post-meta a:not(:hover) {
     @extend %link-underline;
   }
+
+  > div:first-child {
+    padding-bottom: 2rem;
+  }
 }
 
 .post-tags {
-  line-height: 2rem;
+  line-height: 1.8rem;
 }
 
 .post-navigation {
@@ -310,7 +314,7 @@ nav[data-toggle=toc] {
   @include label(inherit, 400, inherit);
 
   &::after {
-    content: ":";
+    content: "";
   }
 }
 
@@ -341,7 +345,7 @@ nav[data-toggle=toc] {
     flex-wrap: wrap-reverse !important;
 
     > div:first-child {
-      width: 100%;
+      // width: 100%;
       margin-top: 1rem;
     }
   }
