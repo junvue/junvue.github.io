@@ -54,12 +54,21 @@
 
   {% capture seo_img_tags %}
     <!-- Junvue's SEO img tag for Jekyll SEO tag -->
+    <meta name="language" content="korean" />
+    <meta name="author" content="Junvue" />
+    <meta name="keywords" content="기술 블로그, Engineering Blog, 블로그, Blog, 일상 생활, Personal, HTML, CSS, Javascript, React, Vue, 프론트엔드, Frontend, 개발자, 개발, 요리, 캠핑" />
+    <meta name=”robots” content=”index,follow”>
+    <meta http-equiv="Subject" content="종합 블로그" />
     <meta property="og:image" content="{{ img_url }}" />
     <meta property="og:image:alt" content="Junvue's blog preview image" />
+    <meta property="og:site_name" content="Junvue's blog" />
+    <meta name="twitter:title" content="Junvue" />
+    <meta name="twitter:site" content="@Junvue" />
+    <meta name="twitter:creator" content="@Junvue" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:image" content="{{ img_url }}" />
-    <meta property="twitter:image:alt" content="Junvue's blog preview image" />
-    <meta property="twitter:description" content="{{ description }}" />
+    <meta name="twitter:image" content="{{ img_url }}" />
+    <meta name="twitter:image:alt" content="Junvue's blog preview image" />
+    <meta name="twitter:description" content="{{ description }}" />
     <!-- End Junvue's SEO img tag -->
   {% endcapture %}
 
