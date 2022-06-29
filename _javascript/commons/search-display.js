@@ -13,6 +13,7 @@ $(function() {
   const results = $("#search-results");
   const input = $("#search-input");
   const hints = $("#search-hints");
+  const cleaner = $("search-cleaner");
 
   const scrollBlocker = (function () {
     let offset = 0;
@@ -104,6 +105,7 @@ $(function() {
 
   input.focus(function() {
     searchWrapper.addClass("input-focus");
+    cleaner.addClass("loaded");
   });
 
   input.focusout(function() {
@@ -117,7 +119,6 @@ $(function() {
       } else {
         resultSwitch.off();
       }
-
     } else {
       resultSwitch.on();
       if (isMobileView()) {
@@ -125,5 +126,4 @@ $(function() {
       }
     }
   });
-
 });
