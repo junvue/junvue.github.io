@@ -27,19 +27,20 @@
     {% seo title=false %}
   {% endcapture %}
 
-  
   {% if site.img_cdn contains '//' %}
     <!-- `site.img_cdn` is a cross-origin URL -->
     {% assign img_url = site.img_cdn %}
-  {% else %}
-    <!-- `site.img_cdn` is a local file path -->
-    {% assign img_url = site.url | append: site.img_cdn %}
-  {% endif %}
+    {% else %}
+      <!-- `site.img_cdn` is a local file path -->
+      {% assign first_letter = site.img_cdn | slice: 0 %}
+      
+      <!-- `site.img_cdn` is not starts with '/' -->
+      {% if first_letter != "/" %}
+        {% assign new_url = site.img_cdn | prepend: "/" %}
+      {% endif %}
 
-  {% capture og %}
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="{{ img_url }}" />
-  {% endcapture %}
+      {% assign img_url = site.url | append: new_url %}
+  {% endif %}
 
   {% capture first_target %}<meta property="og:description" content="{% endcapture %}
   {% capture last_target %}<meta name="description" content="{% endcapture %}
@@ -51,15 +52,18 @@
 
   {% assign description = description | strip | remove: rm_target %}
 
-  {% capture twitter %}
+  {% capture seo_img_tags %}
+    <!-- Junvue's SEO img tag for Jekyll SEO tag -->
+    <meta property="og:image" content="{{ img_url }}" />
+    <meta property="og:image:alt" content="Junvue's blog preview image" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:image" content="{{ img_url }}" />
+    <meta property="twitter:image:alt" content="Junvue's blog preview image" />
     <meta property="twitter:description" content="{{ description }}" />
+    <!-- End Junvue's SEO img tag -->
   {% endcapture %}
 
-  {% assign seo_tags = seo_tags | replace: '<meta property="og:type" content="website" />', og %}
-  {% assign seo_tags = seo_tags | replace: '<meta name="twitter:card" content="summary" />', twitter %}
-  
+  {{ seo_img_tags }}
   {{ seo_tags }}
 
   <title>
