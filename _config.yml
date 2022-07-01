@@ -113,7 +113,7 @@ comments:
     repo: junvue/junvue.github.io             # <gh-username>/<repo>
     repo_id: R_kgDOHkTvUQ
     category: Comments
-    category_id: DIC_kwDOHkTvUc4CP-v6
+    category_id: DIC_kwDOHkTvUc4CP-yG
     mapping: pathname          # optional, default to 'pathname'
     input_position:   # optional, default to 'bottom'
     lang:             # optional, default to the value of `site.lang`
