@@ -264,9 +264,9 @@ img[data-src] {
     margin: 0 0.35rem 0.5rem 0;
 
     &:hover {
-      background-color: #2a408e;
-      border-color: #2a408e;
-      color: #fff;
+      background-color: var(--btn-border-color);
+      border-color: var(--btn-border-color);
+      color: rgb(80, 80, 80);
       transition: none;
     }
   }
@@ -428,6 +428,15 @@ img[data-src] {
   font-size: 80%;
 }
 
+#page-preview {
+  figcaption {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+    margin-top: 0.5rem;
+  }
+}
+
 .post-meta {
   font-size: 0.85rem;
   word-spacing: 1px;
@@ -450,7 +459,7 @@ img[data-src] {
 .post-content {
   font-size: 1.08rem;
   line-height: 1.8;
-  margin-top: 2rem;
+  padding-top: 2rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
@@ -527,9 +536,8 @@ img[data-src] {
   display: inline-block;
   min-width: 2rem;
   text-align: center;
-  background: var(--tag-bg);
-  border-radius: 0.3rem;
-  padding: 0 0.4rem;
+  // background: var(--tag-bg);
+  // border-radius: 0.3rem;
   color: inherit;
   line-height: 1.3rem;
 
@@ -537,12 +545,16 @@ img[data-src] {
     margin-right: 0.2rem;
   }
 
+  &:not(:hover) {
+    background: rgb(240, 240, 240);
+    border-radius: 0.3rem;
+  }
+
   &:hover {
     @extend %tag-hover;
 
-    border-bottom: none;
     text-decoration: none;
-    color: #d2603a;
+    color: rgb(80, 80, 80);
   }
 }
 
@@ -601,8 +613,8 @@ img[data-src] {
 
 .disabled {
   color: rgb(206, 196, 196);
-  pointer-events: auto;
-  cursor: not-allowed;
+  // pointer-events: auto;
+  // cursor: not-allowed;
 }
 
 .hide-border-bottom {
@@ -706,7 +718,7 @@ $sidebar-display: "sidebar-display";
       font-weight: 900;
       font-size: 1.5rem;
       letter-spacing: 0.5px;
-      color: white;
+      color: rgba(255, 255, 255, 0.8);
     }
   }
 
@@ -938,7 +950,7 @@ $sidebar-display: "sidebar-display";
 
 #search-wrapper {
   display: flex;
-  width: 85%;
+  width: 100%;
   border-radius: 1rem;
   border: 1px solid var(--search-wrapper-border-color);
   background: var(--search-wrapper-bg);
@@ -953,7 +965,7 @@ $sidebar-display: "sidebar-display";
 
 #search-cancel { /* 'Cancel' link */
   color: var(--link-color);
-  margin-left: 1rem;
+  padding-left: 1rem;
   display: none;
 
   @extend %cursor-pointer;
@@ -1064,9 +1076,9 @@ input::-webkit-search-results-decoration {
   }
 } /* #search-results */
 
-#topbar-title {
+#topbar-title-wrapper {
   display: none;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   font-family: sans-serif;
   color: var(--topbar-text-color);
@@ -1076,6 +1088,11 @@ input::-webkit-search-results-decoration {
   text-overflow: ellipsis;
   word-break: keep-all;
   white-space: nowrap;
+}
+
+#topbar-avatar {
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 #core-wrapper {
@@ -1129,7 +1146,7 @@ input::-webkit-search-results-decoration {
 
 /* --- button back-to-top --- */
 
-#back-to-top {
+#back-to-top, #go-to-bottom {
   $size: 2.7em;
 
   display: none;
@@ -1156,6 +1173,11 @@ input::-webkit-search-results-decoration {
 #back-to-top:hover {
   transform: translate3d(0, -5px, 0);
   -webkit-transform: translate3d(0, -5px, 0);
+}
+
+#go-to-bottom:hover {
+  transform: translate3d(0, 5px, 0);
+  -webkit-transform: translate3d(0, 5px, 0);
 }
 
 #notification {
@@ -1345,7 +1367,7 @@ input::-webkit-search-results-decoration {
     margin-top: 0;
   }
 
-  #topbar-title,
+  #topbar-title-wrapper,
   #sidebar-trigger,
   #search-trigger {
     display: block;
@@ -1418,15 +1440,20 @@ input::-webkit-search-results-decoration {
 
   /* button 'back-to-Top' position */
   #back-to-top {
-    bottom: 5.5rem;
+    bottom: 11.5rem;
     right: 5%;
+  }
+
+  #go-to-bottom {
+    bottom: 7rem;
+    right: 5%
   }
 
   #topbar {
     @include pl-pr(2rem);
   }
 
-  #topbar-title {
+  #topbar-title-wrapper {
     text-align: left;
   }
 
@@ -1514,7 +1541,11 @@ input::-webkit-search-results-decoration {
 
 @media all and (min-width: 1200px) {
   #back-to-top {
-    bottom: 6.5rem;
+    bottom: 11.5rem;
+  }
+
+  #go-to-bottom {
+    bottom: 7rem;
   }
 
   #search-wrapper {
@@ -1554,7 +1585,7 @@ input::-webkit-search-results-decoration {
 }
 
 @media all and (min-width: 1400px) {
-  #back-to-top {
+  #back-to-top, #go-to-bottom {
     right: calc((100vw - #{$sidebar-width} - 1140px) / 2 + 3rem);
   }
 }
@@ -1582,7 +1613,7 @@ input::-webkit-search-results-decoration {
     padding-right: 4.5rem !important;
   }
 
-  #back-to-top {
+  #back-to-top, #go-to-bottom {
     right: calc((100vw - #{$sidebar-width-large} - #{$main-content-max-width}) / 2 + 2rem);
   }
 

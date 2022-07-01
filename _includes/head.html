@@ -27,19 +27,17 @@
     {% seo title=false %}
   {% endcapture %}
 
-  {% if site.img_cdn contains '//' %}
-    <!-- `site.img_cdn` is a cross-origin URL -->
-    {% assign img_url = site.img_cdn %}
-    {% else %}
-      <!-- `site.img_cdn` is a local file path -->
-      {% assign first_letter = site.img_cdn | slice: 0 %}
-      
-      <!-- `site.img_cdn` is not starts with '/' -->
-      {% if first_letter != "/" %}
-        {% assign new_url = site.img_cdn | prepend: "/" %}
+  <!-- Junvue's SEO img tag for Jekyll SEO tag -->
+  {% if site.preview != empty and site.preview %}
+    {% capture preview_url %}
+      {% if site.preview contains '://' %}
+        {{ site.preview }}
+      {% elsif site.img_cdn != empty and site.img_cdn %}
+        {{ site.preview | prepend: site.img_cdn }}
+      {% else %}
+        {{ site.preview | relative_url }}
       {% endif %}
-
-      {% assign img_url = site.url | append: new_url %}
+    {% endcapture %}
   {% endif %}
 
   {% capture first_target %}<meta property="og:description" content="{% endcapture %}
@@ -53,26 +51,25 @@
   {% assign description = description | strip | remove: rm_target %}
 
   {% capture seo_img_tags %}
-    <!-- Junvue's SEO img tag for Jekyll SEO tag -->
     <meta name="language" content="korean" />
     <meta name="author" content="Junvue" />
     <meta name="keywords" content="기술 블로그, Engineering Blog, 블로그, Blog, 일상 생활, Personal, HTML, CSS, Javascript, React, Vue, 프론트엔드, Frontend, 개발자, 개발, 요리, 캠핑" />
     <meta name=”robots” content=”index,follow”>
     <meta http-equiv="Subject" content="종합 블로그" />
-    <meta property="og:image" content="{{ img_url }}" />
+    <meta property="og:image" content="{{ preview_url | strip }}" />
     <meta property="og:image:alt" content="Junvue's blog preview image" />
     <meta property="og:site_name" content="Junvue's blog" />
     <meta name="twitter:title" content="Junvue" />
     <meta name="twitter:site" content="@Junvue" />
     <meta name="twitter:creator" content="@Junvue" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="{{ img_url }}" />
+    <meta name="twitter:image" content="{{ preview_url | strip }}" />
     <meta name="twitter:image:alt" content="Junvue's blog preview image" />
     <meta name="twitter:description" content="{{ description }}" />
-    <!-- End Junvue's SEO img tag -->
   {% endcapture %}
 
   {{ seo_img_tags }}
+  <!-- End Junvue's SEO img tag -->
   {{ seo_tags }}
 
   <title>
@@ -137,6 +134,7 @@
   <!-- JavaScript -->
 
   <script src="{{ site.data.assets[origin].jquery.js | relative_url }}"></script>
+  <script src="{{ '/assets/js/junvue.js' | relative_url }}"></script>
 
   {% unless site.theme_mode %}
     {% include mode-toggle.html %}

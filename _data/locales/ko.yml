@@ -4,8 +4,8 @@
 
 layout:
   post: Junvue
-  category: 카테고리
-  tag: 태그
+  category: Categories
+  tag: Tags
 
 # The tabs of sidebar
 tabs:
@@ -65,6 +65,7 @@ post:
   button:
     next: 다음 글
     previous: 이전 글
+    list: 목록
     copy_code:
       succeed: 복사되었습니다!
     share_link:

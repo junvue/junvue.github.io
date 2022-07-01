@@ -88,10 +88,13 @@ theme_mode: light # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: assets/img/preview.png
+img_cdn: 'https://raw.githubusercontent.com/junvue/blog-images/main'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/img/avatar.png
+avatar: '/commons/avatar.png'
+
+# the preview images on seo tags, support local or CORS resources
+preview: '/commons/preview-b.png'
 
 # boolean type, the global switch for ToC in posts.
 toc: true

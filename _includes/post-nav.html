@@ -4,27 +4,35 @@
 
 <div class="post-navigation d-flex justify-content-between">
   {% if page.previous.url %}
-  <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary"
-    prompt="{{ site.data.locales[lang].post.button.previous }}">
-    <p>{{ page.previous.title }}</p>
-  </a>
+    <a href="{{ site.baseurl }}{{ page.previous.url }}" class="btn btn-outline-primary btn-left" prompt="{{ site.data.locales[lang].post.button.previous }}">
+      <p>{{ page.previous.title }}</p>
+    </a>
   {% else %}
-  <div class="btn btn-outline-primary disabled"
-    prompt="{{ site.data.locales[lang].post.button.previous }}">
-    <p>-</p>
-  </div>
+    <div class="btn btn-outline-primary btn-left disabled" prompt="{{ site.data.locales[lang].post.button.previous }}">
+      <p>-</p>
+    </div>
   {% endif %}
 
-  {% if page.next.url %}
-  <a href="{{ site.baseurl }}{{page.next.url}}" class="btn btn-outline-primary"
-    prompt="{{ site.data.locales[lang].post.button.next }}">
-    <p>{{ page.next.title }}</p>
-  </a>
+  <!-- add list button -->
+  {% if page.categories.size == 2 %}
+    {% assign prompt = page.categories[0] | append: "&#32;>&#32;" | append: page.categories[1] %}
+    {% assign num = 1 %}
   {% else %}
-  <div class="btn btn-outline-primary disabled"
-    prompt="{{ site.data.locales[lang].post.button.next }}">
-    <p>-</p>
-  </div>
+    {% assign prompt = page.categories[0] %}
+    {% assign num = 0 %}
+  {% endif %}
+  <a href="{{ site.baseurl }}/categories/{{ page.categories[num] | slugify | url_encode }}/" class="btn btn-outline-primary btn-list" prompt="{{ site.data.locales[lang].post.button.list }}">
+      <p><i class="far fa-folder-open fa-fw mr-1" aria-hidden="true"></i>{{ prompt }}</p>
+  </a>
+
+  {% if page.next.url %}
+    <a href="{{ site.baseurl }}{{ page.next.url}}" class="btn btn-outline-primary btn-right" prompt="{{ site.data.locales[lang].post.button.next }}">
+      <p>{{ page.next.title }}</p>
+    </a>
+  {% else %}
+    <div class="btn btn-outline-primary btn-right disabled" prompt="{{ site.data.locales[lang].post.button.next }}">
+      <p>-</p>
+    </div>
   {% endif %}
 
 </div>

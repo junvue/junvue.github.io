@@ -55,7 +55,7 @@ img.preview-img {
   font-size: 0.85rem;
 
   .post-meta a:not(:hover) {
-    @extend %link-underline;
+    // @extend %link-underline;
   }
 
   > div:first-child {
@@ -76,17 +76,19 @@ img.preview-img {
 
     color: var(--link-color);
 
-    &:hover {
-      background: #2a408e;
-      color: #fff;
-      border-color: #2a408e;
+    &:hover,
+    &:active,
+    &:visited {
+      background: var(--btn-border-color) !important;
+      border-color: var(--btn-border-color) !important;
+      color: var(--link-color) !important;
     }
 
     &.disabled {
       @include btn-post-nav;
 
-      pointer-events: auto;
-      cursor: not-allowed;
+      // pointer-events: auto;
+      // cursor: not-allowed;
       background: none;
       color: gray;
 
@@ -105,18 +107,6 @@ img.preview-img {
       text-transform: uppercase;
       content: attr(prompt);
     }
-
-    &:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      left: 0.5px;
-    }
-
-    &:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      right: 0.5px;
-    }
   }
 
   p {
@@ -126,7 +116,29 @@ img.preview-img {
     white-space: normal;
   }
 
-} /* .post-navigation */
+}
+
+/* post nav btn hover */
+.btn-left {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  left: 0.5px;
+}
+
+.btn-list {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-right {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  right: 0.5px;
+}
+
+/* .post-navigation */
 
 @keyframes fade-up {
   from {
@@ -165,6 +177,13 @@ nav[data-toggle=toc] {
       font-weight: 600 !important;
     }
   }
+}
+
+.nav-link.active,
+.nav-link.active:focus,
+.nav-link.active:hover {
+  color: rgb(80, 80, 80) !important;
+  border-left: 2px solid rgb(80, 80, 80) !important;
 }
 
 /* --- Related Posts --- */

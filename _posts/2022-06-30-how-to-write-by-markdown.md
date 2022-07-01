@@ -1,3 +1,13 @@
+---
+title: 마크다운 작성법
+author: Junvue
+date: 2022-06-30 00:43:00 +0900
+categories: [Blog, Post]
+tags: [typography]
+math: true
+mermaid: true
+---
+
 [공통] 마크다운 markdown 작성법
 ======================
 
