@@ -76,7 +76,11 @@ img.preview-img {
 
     color: var(--link-color);
 
-    &:hover,
+    &:hover {
+      background: var(--btn-border-color);
+      border-color: var(--btn-border-color);
+    }
+
     &:active,
     &:visited {
       background: var(--btn-border-color) !important;

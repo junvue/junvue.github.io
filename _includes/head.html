@@ -52,23 +52,45 @@
 
   {% capture seo_img_tags %}
     <meta name="language" content="korean" />
-    <meta name="author" content="Junvue" />
+    <meta name="author" content="{{ site.title }}" />
     <meta name="keywords" content="기술 블로그, Engineering Blog, 블로그, Blog, 일상 생활, Personal, HTML, CSS, Javascript, React, Vue, 프론트엔드, Frontend, 개발자, 개발, 요리, 캠핑" />
     <meta name=”robots” content=”index,follow”>
     <meta http-equiv="Subject" content="종합 블로그" />
     <meta property="og:image" content="{{ preview_url | strip }}" />
     <meta property="og:image:alt" content="Junvue's blog preview image" />
     <meta property="og:site_name" content="Junvue's blog" />
-    <meta name="twitter:title" content="Junvue" />
-    <meta name="twitter:site" content="@Junvue" />
-    <meta name="twitter:creator" content="@Junvue" />
+    <meta name="twitter:title" content="{{ site.title }}" />
+    <meta name="twitter:site" content="@{{ site.title }}" />
+    <meta name="twitter:creator" content="@{{ site.title }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="{{ preview_url | strip }}" />
     <meta name="twitter:image:alt" content="Junvue's blog preview image" />
     <meta name="twitter:description" content="{{ description }}" />
   {% endcapture %}
 
-  {{ seo_img_tags }}
+  {% if page.image.path != empty and page.image.path %}
+    {% capture preview_url %}
+      {% if site.img_cdn != empty and site.img_cdn %}
+        {{ page.image.path | prepend: site.img_cdn }}
+      {% endif %}
+    {% endcapture %}
+
+    {% capture seo_post_tags %}
+      <meta name="language" content="korean" />
+      <meta name="keywords" content="기술 블로그, Engineering Blog, 블로그, Blog, 일상 생활, Personal, HTML, CSS, Javascript, React, Vue, 프론트엔드, Frontend, 개발자, 개발, 요리, 캠핑" />
+      <meta name=”robots” content=”index,follow”>
+      <meta http-equiv="Subject" content="종합 블로그" />
+      <meta property="og:site_name" content="Junvue's blog" />
+      <meta name="twitter:title" content="{{ page.title }}" />
+      <meta name="twitter:site" content="@{{ site.title }}" />
+      <meta name="twitter:image" content="{{ preview_url | strip }}" />
+      <meta name="twitter:description" content="{{ description }}" />
+    {% endcapture %}
+
+    {{ seo_post_tags }}
+  {% else %}
+    {{ seo_img_tags }}
+  {% endif %}
   <!-- End Junvue's SEO img tag -->
   {{ seo_tags }}
 
