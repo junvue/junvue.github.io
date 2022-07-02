@@ -46,7 +46,7 @@ not_found:
   statment: 해당 URL은 존재하지 않습니다.
 
 notification:
-  update_found: 홈페이지에 변동 사항이 생겼습니다!
+  update_found: '블로그에 새로운 업데이트가 있습니다!<br/>(디자인, 기능 또는 새로운 포스트)'
   update: 적용하기
 
 # ----- Posts related labels -----

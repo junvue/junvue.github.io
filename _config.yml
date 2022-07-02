@@ -58,8 +58,7 @@ social:
     
     # - https://www.linkedin.com/in/username
 
-google_site_verification:               # fill in to your verification string
-
+google_site_verification: yDEdIA-5QmmmsU5eN-LJtZMIoz6CFX_oCYxW5phR8jk               # fill in to your verification string
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
@@ -116,7 +115,7 @@ comments:
     category_id: DIC_kwDOHkTvUc4CP-yG
     mapping: pathname          # optional, default to 'pathname'
     input_position:   # optional, default to 'bottom'
-    lang: en             # optional, default to the value of `site.lang`
+    lang:             # optional, default to the value of `site.lang`
 
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
