@@ -26,7 +26,7 @@ title: Junvue                          # the main title
 tagline: 기억도 해야 하지만,<br/>기록도 해두어야 한다.   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  어떤 개발자의 생각, 요리, 캠핑, 연주, 맛집이 다 담겨있는 기술 블로그 : 기억도 해야 하지만, 기록도 해두어야 한다.
+  어떤 개발자의 기술과 일상이 모두 다 담겨있는 블로그 - 기억도 해야 하지만, 기록도 해두어야 한다.
 
 image: /assets/img/avatar.png
 
@@ -63,7 +63,7 @@ google_site_verification: yDEdIA-5QmmmsU5eN-LJtZMIoz6CFX_oCYxW5phR8jk           
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id:                 # fill in your Google Analytics ID
+  id: G-4BS1JW6V02                 # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint:   # fill in the Google Analytics superProxy endpoint of Google App Engine
