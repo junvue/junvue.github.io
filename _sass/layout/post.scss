@@ -280,9 +280,9 @@ nav[data-toggle=toc] {
   @extend %cursor-pointer;
 
   &:hover {
-    > i {
-      @extend %btn-share-hovor;
-    }
+    background-color: var(--btn-border-color);
+    border-color: var(--btn-border-color);
+    color: rgb(80, 80, 80);
   }
 
   > i {
