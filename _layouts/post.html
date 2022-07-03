@@ -76,29 +76,10 @@ tail_includes:
 </div>
 
 <div class="post-tail-wrapper text-muted">
-  <!--
-  <div class="post-tail-bottom d-flex justify-content-end align-items-center pt-5 pb-2">
-    <div class="license-wrapper">
-
-      {% if site.data.locales[lang].copyright.license.template %}
-
-        {% capture _replacement %}
-        <a href="{{ site.data.locales[lang].copyright.license.link }}">
-          {{ site.data.locales[lang].copyright.license.name }}
-        </a>
-        {% endcapture %}
-
-        {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
-
-      {% endif %}
-    </div>
-  </div>
-  -->
-
   <div class="d-flex justify-content-between">
     <!-- categories -->
     {% if page.categories.size > 0 %}
-    <div class="post-meta mb-3 mr-2">
+    <div class="post-meta mr-2">
       <i class="far fa-folder-open fa-fw mr-1"></i>
       {% for category in page.categories %}
         <a href='{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/'>{{ category }}</a>

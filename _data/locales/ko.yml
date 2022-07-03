@@ -72,7 +72,7 @@ post:
       title: 링크 복사하기
       succeed: 링크가 복사되었습니다!
   # pinned prompt of posts list on homepage
-  pin_prompt: Pinned
+  pin_prompt: 고정됨
 
 # categories page
 categories:
