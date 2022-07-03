@@ -31,11 +31,10 @@ tail_includes:
     <div class="ml-auto">
       <!-- page views -->
       {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
-      <span>
+      <span>{{ site.data.locales[lang].post.pageview_measure }}
         <em id="pv" class="pageviews">
           <i class="fas fa-spinner fa-spin fa-fw"></i>
         </em>
-        {{ site.data.locales[lang].post.pageview_measure }}
       </span>
       {% endif %}
 

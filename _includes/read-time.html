@@ -20,11 +20,10 @@
 {% endcapture %}
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="{{ words }} {{ site.data.locales[lang].post.words }}">
-  <em>{{- read_time -}}{{" "}}{{- site.data.locales[lang].post.read_time.unit -}}</em>
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="{{ site.data.locales[lang].post.words }} 총 {{ words }}자">{{ read_prompt }}
+  <em>{{- read_time -}}{{- site.data.locales[lang].post.read_time.unit -}}</em>
   {%- if include.prompt -%}
     {%- assign _prompt_words = read_prompt | number_of_words: 'auto' -%}
-    {%- unless _prompt_words > 1 -%}{{ " " }}{%- endunless -%}{{ read_prompt }}
+    {%- unless _prompt_words > 1 -%}{{ " " }}{%- endunless -%}
   {%- endif -%}
 </span>

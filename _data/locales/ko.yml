@@ -55,11 +55,11 @@ post:
   written_by: By
   posted: 작성일
   updated: 업데이트
-  words: 단어
-  pageview_measure: 조회
+  words: 글자수
+  pageview_measure: 조회수
   read_time:
-    unit: min
-    prompt: read
+    unit: 분
+    prompt: 읽는데 걸리는 시간 약
   relate_posts: 관련된 글
   share: Share
   button:
