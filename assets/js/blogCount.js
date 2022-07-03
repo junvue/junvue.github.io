@@ -6,10 +6,7 @@
  *   - countUpBlog.js <https://github.com/inorganik/countUpBlog.js>
  */
 
-const todayURL = "https://junvue-blog.du.r.appspot.com/query?id=ag12fmp1bnZ1ZS1ibG9nchULEghBcGlRdWVyeRiAgICYpteACgw";
-const totalURL = "https://junvue-blog.du.r.appspot.com/query?id=ag12fmp1bnZ1ZS1ibG9nchULEghBcGlRdWVyeRiAgICYpteACQw";
-
-const getInitStatusBlog = (function () {
+  const getInitStatusBlog = (function () {
     let hasInit = false;
     return () => {
       let ret = hasInit;
@@ -29,10 +26,16 @@ const getInitStatusBlog = (function () {
       let content = getContent(selector);
       return (typeof content !== "undefined" && content !== false);
     }
+
+    const todayURL = "https://junvue-blog.du.r.appspot.com/query?id=ag12fmp1bnZ1ZS1ibG9nchULEghBcGlRdWVyeRiAgICYpteACgw";
+    const totalURL = "https://junvue-blog.du.r.appspot.com/query?id=ag12fmp1bnZ1ZS1ibG9nchULEghBcGlRdWVyeRiAgICYpteACQw";
   
     return {
-      getProxyMeta() {
-        return todayURL;
+      getProxyMeta(type) {
+        if(type == "today")
+            return todayURL;
+        else(type == "total")
+            return totalURL;
       },
       getLocalMeta() {
         return getContent("meta[name=pv-cache-path]");
@@ -125,6 +128,7 @@ const getInitStatusBlog = (function () {
   function countUpBlog(min, max, destId) {
     if (min < max) {
       let numAnim = new countUpBlog(destId, min, max);
+
       if (!numAnim.error) {
         numAnim.start();
       } else {
@@ -133,30 +137,27 @@ const getInitStatusBlog = (function () {
     }
   }
   
-  function countBlogPV(path, rows) {
+  function countBlogPV(rows) {
     let count = 0;
   
     if (typeof rows !== "undefined" ) {
-      for (let i = 0; i < rows.length; ++i) {
-        const gaPath = rows[parseInt(i, 10)][0];
-        if (gaPath === path) { /* path format see: site.permalink */
-          count += parseInt(rows[parseInt(i, 10)][1], 10);
-          break;
-        }
-      }
+        const temp = rows[0][0];
+        
+        count += temp;
     }
   
     return count;
   }
   
-  function tackleBlogPV(rows, path, elem, hasInit) {
-    let count = countBlogPV(path, rows);
+  function tackleBlogPV(rows, elem, hasInit) {
+    let count = countBlogPV(rows);
     count = (count === 0 ? 1 : count);
   
     if (!hasInit) {
       elem.text(new Intl.NumberFormat().format(count));
     } else {
       const initCount = parseInt(elem.text().replace(/,/g, ""), 10);
+
       if (count > initCount) {
         countUpBlog(initCount, count, elem.attr("id"));
       }
@@ -169,29 +170,18 @@ const getInitStatusBlog = (function () {
     }
   
     let hasInit = getInitStatusBlog();
-    const rows = data.rows; /* could be undefined */
+
+    const rows = data.rows;
 
     console.log(rows);
-
-    /*
   
-    if ($("#post-list").length > 0) {
-      $(".post-preview").each(function() {
-        const path = $(this).find("a").attr("href");
-        tackleBlogPV(rows, path, $(this).find(".pageviews"), hasInit);
-      });
-  
-    } else if ($(".post").length > 0) {
-      const path = window.location.pathname;
-      tackleBlogPV(rows, path, $("#pv"), hasInit);
-    }
-    */
+    tackleBlogPV(rows, $("#todayPV"), hasInit);
   }
   
   function fetchProxyBlogPageviews() {
     $.ajax({
     type: "GET",
-    url: BlogPvOpts.getProxyMeta(),
+    url: BlogPvOpts.getProxyMeta(today),
     dataType: "jsonp",
     jsonpCallback: "displayBlogPageviews",
     success: (data) => {
@@ -204,6 +194,7 @@ const getInitStatusBlog = (function () {
     });
   }
   
+  /*
   function fetchLocalBlogPageviews(hasCache = false) {
     return fetch(BlogPvOpts.getLocalMeta())
       .then(response => response.json())
@@ -220,8 +211,10 @@ const getInitStatusBlog = (function () {
         console.log("세이브로컬캐쉬햇어용");
       });
   }
+  */
   
   $(function() {  
+    console.log(localStorage.getItem(Keys));
     blogPvStorage.inspectKeys();
   
     if (blogPvStorage.hasCache()) {

@@ -2,7 +2,8 @@
   The Side Bar
 -->
 
-<div id="sidebar" class="d-flex flex-column align-items-end">
+<!-- align-items-end -->
+<div id="sidebar" class="d-flex flex-column">
   <div class="profile-wrapper text-center">
     <div id="avatar">
       <a href="{{ '/' | relative_url }}" class="mx-auto">
@@ -51,7 +52,16 @@
 
   </ul> <!-- ul.nav.flex-column -->
 
-  <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
+  <div class="sidebar-pageview d-flex flew-wrap justify-content-center align-items-center mt-auto">
+    <span>{{ site.data.locales[lang].sidebar.today }}
+      <em id="todayPV"><i class="fas fa-spinner fa-spin fa-fw"></i></em>
+    </span>
+    <span>{{ site.data.locales[lang].sidebar.total }}
+      <em id="totalPV"><i class="fas fa-spinner fa-spin fa-fw"></i></em>
+    </span>
+  </div>
+
+  <div class="sidebar-bottom d-flex flex-wrap justify-content-center align-items-center">
 
     {% unless site.theme_mode %}
       <button class="mode-toggle btn" aria-label="Switch Mode">

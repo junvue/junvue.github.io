@@ -437,16 +437,20 @@ img[data-src] {
   }
 }
 
+.post {
+  > .post-meta {
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+  
+    > div:last-child {
+      margin-left: auto !important;
+    }
+  }
+}
+
 .post-meta {
   font-size: 0.85rem;
   word-spacing: 1px;
-
-  -ms-flex-pack: justify !important;
-  justify-content: space-between !important;
-
-  div:last-child {
-    margin-left: auto !important;
-  }
 
   a {
     &:not(:last-child) {
@@ -466,7 +470,7 @@ img[data-src] {
 .post-content {
   font-size: 1.08rem;
   line-height: 1.8;
-  padding-top: 2rem;
+  padding-top: 0rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
@@ -828,6 +832,28 @@ $sidebar-display: "sidebar-display";
 
   } /* ul */
 
+  @mixin dot($pl: 0.25rem, $pr: 0.25rem) {
+    content: "\2022";
+    padding-left: $pl;
+    padding-right: $pr;
+  }
+
+  .sidebar-pageview {
+    padding-bottom: 2rem;
+
+    > span {
+      color: rgba(255, 255, 255, 0.5);
+
+      em {
+        font-style: normal;
+      }
+    }
+
+    > span + span::before {
+      @include dot;
+    }
+  }
+ 
   .sidebar-bottom {
     margin-bottom: 2.1rem;
 
@@ -1253,13 +1279,13 @@ input::-webkit-search-results-decoration {
       margin-left: 0 !important;
     }
   }
-  
+
   @mixin vertical-bar($pl: 0.25rem, $pr: 0.25rem) {
     content: "\007C";
     padding-left: $pl;
     padding-right: $pr;
   }
-
+  
   h1 + .post-meta {
     span + div::before {
       @include vertical-bar;
