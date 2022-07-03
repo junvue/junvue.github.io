@@ -282,24 +282,21 @@ nav[data-toggle=toc] {
   &:hover {
     background-color: var(--btn-border-color);
     border-color: var(--btn-border-color);
-    color: rgb(80, 80, 80);
+    > * {
+      color: rgb(80, 80, 80) !important;
+    }
   }
 
   > i {
     font-size: 0.8rem;
     position: relative;
     bottom: 1px;
-    margin-right: 1px;
   }
 
   .share-label {
-    @include label(inherit, 400, inherit);
-  
-    font-size: 0.95rem !important;
-  
-    &::after {
-      content: "";
-    }
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: gray;
   }
 
 } /* .post-share-btn */

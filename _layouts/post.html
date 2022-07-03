@@ -13,7 +13,7 @@ tail_includes:
 
 <h1 data-toc-skip>{{ page.title }}</h1>
 
-<div class="post-meta text-muted d-flex justify-content-between">
+<div class="post-meta text-muted d-flex">
     <!-- published date -->
     <span>
       {{ site.data.locales[lang].post.posted }}
@@ -22,20 +22,15 @@ tail_includes:
 
     <!-- lastmod date -->
     {% if page.last_modified_at %}
-    <span>
-      {{ site.data.locales[lang].post.updated }}
+    <span id="last_modifed">{{ site.data.locales[lang].post.updated }}
       {% include datetime.html date=page.last_modified_at tooltip=true %}
     </span>
     {% endif %}
 
-    <div class="ml-auto">
+    <div>
       <!-- page views -->
-      {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}
-      <span>{{ site.data.locales[lang].post.pageview_measure }}
-        <em id="pv" class="pageviews">
-          <i class="fas fa-spinner fa-spin fa-fw"></i>
-        </em>
-      </span>
+      {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}<span>{{ site.data.locales[lang].post.pageview_measure }}
+        <em id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></em></span>
       {% endif %}
 
       <!-- read time -->

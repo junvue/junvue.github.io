@@ -441,6 +441,13 @@ img[data-src] {
   font-size: 0.85rem;
   word-spacing: 1px;
 
+  -ms-flex-pack: justify !important;
+  justify-content: space-between !important;
+
+  div:last-child {
+    margin-left: auto !important;
+  }
+
   a {
     &:not(:last-child) {
       margin-right: 2px;
@@ -1233,6 +1240,32 @@ input::-webkit-search-results-decoration {
  {content} <= 849px screen width
 
 */
+
+@media all and (max-width: 470px) {
+  #last_modifed {
+    display: none;
+  }
+  .post-meta {
+    -ms-flex-pack:start !important;
+    justify-content:start !important;
+
+    div:last-child {
+      margin-left: 0 !important;
+    }
+  }
+  
+  @mixin vertical-bar($pl: 0.25rem, $pr: 0.25rem) {
+    content: "\007C";
+    padding-left: $pl;
+    padding-right: $pr;
+  }
+
+  h1 + .post-meta {
+    span + div::before {
+      @include vertical-bar;
+    }
+  }
+}
 
 @media all and (max-width: 576px) {
   footer {

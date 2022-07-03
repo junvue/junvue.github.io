@@ -54,14 +54,14 @@ notification:
 post:
   written_by: By
   posted: 작성일
-  updated: 업데이트
+  updated: 수정일
   words: 글자수
   pageview_measure: 조회수
   read_time:
     unit: 분
     prompt: 읽는데 걸리는 시간 약
   relate_posts: 관련된 글
-  share: Share
+  share: 공유하기
   button:
     next: 다음 글
     previous: 이전 글
