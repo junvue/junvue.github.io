@@ -26,7 +26,7 @@ title: Junvue                          # the main title
 tagline: 기억도 해야 하지만,<br/>기록도 해두어야 한다.   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  어떤 개발자의 기술과 일상이 모두 다 담겨있는 블로그 - 기억도 해야 하지만, 기록도 해두어야 한다.
+  어떤 개발자의 기술과 일상이 담겨있는 블로그
 
 image: /assets/img/avatar.png
 
@@ -93,7 +93,7 @@ img_cdn: 'https://raw.githubusercontent.com/junvue/blog-images/main'
 avatar: '/commons/avatar.png'
 
 # the preview images on seo tags, support local or CORS resources
-preview: '/commons/preview-b.png'
+preview: '/commons/preview-c.png'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
