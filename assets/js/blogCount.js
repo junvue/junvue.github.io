@@ -122,15 +122,6 @@ const blogPvStorage = (function () {
       else if(type == "total")
         return get(total_Keys.KEY_PV_SRC) === Source.LOCAL;
     },
-    isFromProxy(type) {
-      if(type == "today")
-        return get(today_Keys.KEY_PV_SRC) === Source.PROXY;
-      else if(type == "total")
-        return get(total_Keys.KEY_PV_SRC) === Source.PROXY;
-    },
-    newerThan(type, pv) {
-      return blogPvStorage.getCache(type).totalsForAllResults["ga:pageviews"] > pv.totalsForAllResults["ga:pageviews"];
-    },
     inspectKeys(type) {
       if (localStorage.length !== blogPvStorage.keysCount(type)) {
         localStorage.clear();
@@ -195,20 +186,12 @@ function tackleBlogPV(type, rows, elem, hasInit) {
   let count = countBlogPV(rows);
   count = (count === 0 ? 1 : count); // if count is '0' then replace to '1' or just 'count'
 
-  console.log("[" + type + "] hasInit is " + hasInit)
-
   if(!hasInit) {
-    console.log("[" + type + "] InitStatusBlog = no");
     elem.text(new Intl.NumberFormat().format(count));
-    console.log("[" + type + "] display pageview done.");
   } else {
-    console.log("[" + type + "] InitStatusBlog = yes");
     const initCount = parseInt(elem.text().replace(/,/g, ""), 10);
 
-    console.log("[" + type + "] initCount = " + initCount);
-
     if (count > initCount) {
-      console.log("[" + type + "] count is > initcount");
       countUpBlog(initCount, count, elem.attr("id"));
     }
   }
@@ -226,14 +209,12 @@ function displayBlogPageviews(data) {
   if(type == "today") {
     let hasInit = getInitStatusBlog.status(type);
 
-    console.log("[" + type + "] displayBlogPageviews rows = " + rows[0]);
     tackleBlogPV(type, rows, $("#todayPV"), hasInit);
   } else {
     type = "total";
 
     let hasInit = getInitStatusBlog.status(type);
 
-    console.log("[" + type + "] displayBlogPageviews rows = " + rows[0]);
     tackleBlogPV(type, rows, $("#totalPV"), hasInit);
   }
 }
@@ -246,11 +227,9 @@ function fetchProxyBlogPageviews(type, callback) {
     jsonpCallback: "displayBlogPageviews",
     success: (data) => {
       blogPvStorage.saveProxyCache(type, JSON.stringify(data));
-      console.log("[" + type + "] 2. save ProxyCache");
       callback(type);
     },
     error: (jqXHR, textStatus, errorThrown) => {
-      console.log("[" + type + "] Failed today pageviews: " + errorThrown);
     }
   });
 }
@@ -259,55 +238,34 @@ function getPageviews(type) {
   blogPvStorage.inspectKeys(type);
 
   if (blogPvStorage.hasCache(type)) { // has Cashe
-    console.log("[" + type + "] 1. blogPvStorage.hasCashe = yes");
     displayBlogPageviews(blogPvStorage.getCache(type));
 
     if(type == "total") {
-      console.log("[" + type + "] blogCount SUCCESS ! ! !");
     } else {
-      console.log("[" + type + "] blogCount SUCCESS ! ! !");
       getPageviews("total");
     }
 
     if(blogPvStorage.isExpired(type)) {
-      console.log("[" + type + "] There is expired");
 
       if(type == "total") {
-        fetchProxyBlogPageviews(type, callback => { console.log("[" + type + "] fetch is done") });
+        fetchProxyBlogPageviews(type, callback => { });
       } else {
-        fetchProxyBlogPageviews(type, callback => {
-          console.log("[" + type + "] fetch is done");
-          console.log("---------------------------------------------------------------");
-          getPageviews("total");
-        });
+        fetchProxyBlogPageviews(type, callback => { getPageviews("total") });
       }
     } else {
-      console.log("[" + type + "] There is no expired");
       if (blogPvStorage.isFromLocal(type)) {
-        console.log("[" + type + "] isFromLocal Yes");
-
         if(type == "total") {
-          fetchProxyBlogPageviews(type, callback => { console.log("[" + type + "] fetch is done") });
+          fetchProxyBlogPageviews(type, callback => { });
         } else {
-          fetchProxyBlogPageviews(type, callback => {
-            console.log("[" + type + "] fetch is done");
-            console.log("---------------------------------------------------------------");
-            getPageviews("total");
-          });
+          fetchProxyBlogPageviews(type, callback => { getPageviews("total") });
         }
       }
     }
   } else { // has not Cashe
-    console.log("[" + type + "] 1. blogPvStorage.hasCashe = no");
-
     if(type == "total") {
-        fetchProxyBlogPageviews(type, callback => { console.log("[" + type + "] fetch is done") });
+        fetchProxyBlogPageviews(type, callback => { });
       } else {
-        fetchProxyBlogPageviews(type, callback => {
-          console.log("[" + type + "] fetch is done");
-          console.log("---------------------------------------------------------------");
-          getPageviews("total");
-        });
+        fetchProxyBlogPageviews(type, callback => { getPageviews("total") });
       }
   }
 }

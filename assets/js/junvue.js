@@ -108,5 +108,30 @@ $(function() {
     mbtnCancel.click(function() {
       topbarTitleWrapper.removeClass("unloaded");
     });
+
+    /* for pageview */
+    if (matchMedia("screen and (min-width: 850px) and (max-width: 1199px)").matches) { // 850이상 1200 미만
+      $(".sidebar-pageview").removeClass("flex-wrap");
+      $(".sidebar-pageview").addClass("flex-column");
+    }
+
+    const body = document.getElementsByTagName("body")[0];
+
+    window.onresize = function(event) {
+      const innerWidth = window.innerWidth;
+
+      if(innerWidth >= "1200") {
+        $(".sidebar-pageview").removeClass("flex-column");
+        $(".sidebar-pageview").addClass("flex-wrap");
+      } else {
+        if(innerWidth >= "850") {
+          $(".sidebar-pageview").removeClass("flex-wrap");
+          $(".sidebar-pageview").addClass("flex-column");
+        } else {
+          $(".sidebar-pageview").removeClass("flex-column");
+          $(".sidebar-pageview").addClass("flex-wrap");
+        }
+      }
+    }
   });
   

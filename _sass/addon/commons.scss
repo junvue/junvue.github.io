@@ -838,18 +838,20 @@ $sidebar-display: "sidebar-display";
     padding-right: $pr;
   }
 
-  .sidebar-pageview {
+  .sidebar-pageview { // Medium
     padding-bottom: 2rem;
 
-    > span {
-      color: rgba(255, 255, 255, 0.5);
+    
+    color: rgba(255, 255, 255, 0.5);
 
-      em {
-        font-style: normal;
-      }
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    em {
+      font-style: normal;
     }
-
-    > span + span::before {
+    
+    div + div::before {
       @include dot;
     }
   }
@@ -1538,6 +1540,16 @@ input::-webkit-search-results-decoration {
       margin-right: 1rem;
     }
 
+    .sidebar-pageview {
+      font-size: 1rem;
+      font-weight: 600;
+
+      div + div::before {
+        content: "";
+        padding: 0;
+      }
+    }
+
     .sidebar-bottom {
       a,
       span {
@@ -1723,7 +1735,6 @@ input::-webkit-search-results-decoration {
         word-spacing: 0;
         margin-top: 0.3rem;
       }
-
     } /* .profile-wrapper (min-width: 1650px) */
 
     ul {
@@ -1751,6 +1762,17 @@ input::-webkit-search-results-decoration {
         }
 
       }
+    }
+
+    @mixin dot($pl: 0.25rem, $pr: 0.25rem) {
+      content: "\2022";
+      padding-left: $pl;
+      padding-right: $pr;
+    }
+  
+    .sidebar-pageview { // Large
+      font-size: 1rem;
+      font-weight: 600;
     }
 
     .sidebar-bottom {
@@ -1796,7 +1818,6 @@ input::-webkit-search-results-decoration {
       }
 
     } /* .sidebar-bottom */
-
   } /* #sidebar */
 
 } /* min-width: 1650px */
