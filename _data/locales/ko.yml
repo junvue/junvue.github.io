@@ -69,7 +69,7 @@ post:
     copy_code:
       succeed: 복사되었습니다!
     share_link:
-      title: 링크 복사하기
+      title: 복사
       succeed: 링크가 복사되었습니다!
   # pinned prompt of posts list on homepage
   pin_prompt: 고정됨

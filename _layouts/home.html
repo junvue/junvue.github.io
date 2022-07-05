@@ -76,15 +76,11 @@ layout: page
         {% endif %}
 
         <span id="vertical-bar">|</span>
-
-        <i class="fas fa-eye fa-fw" style="margin-right: 0.15rem;"></i>
         
-        {% capture target %}
-          <em id="pv" class="pageviews">
-        {% endcapture %}
-
-        {{ post.path | strp_html }}
-
+        <!-- pageviews -->
+        <i class="fas fa-eye fa-fw" style="margin-right: 0.15rem;"></i>
+        <span class="pageviews">
+        </span>
       </div>
 
       {% if post.pin %}
