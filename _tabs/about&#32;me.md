@@ -4,5 +4,8 @@ icon: fas fa-address-card
 order: 1
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+<center>
+    <div style="width: 100%; height: 450px; display: table-cell; vertical-align: middle;">
+        <i>뚝딱 🔨.. 뚝딱 🪚.. 만들고 있는 중...</i>
+    </div>
+</center>

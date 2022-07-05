@@ -967,6 +967,10 @@ $sidebar-display: "sidebar-display";
       @extend %link-hover;
     }
 
+    span:first-child {
+      color: var(--link-color);
+    }
+
     span {
       &:not(:last-child) {
         &::after {
