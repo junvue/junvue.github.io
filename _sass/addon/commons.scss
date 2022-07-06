@@ -443,7 +443,7 @@ img[data-src] {
     justify-content: space-between !important;
   
     > div:last-child {
-      margin-left: auto !important;
+      margin-left: auto;
     }
   }
 }
@@ -1376,12 +1376,13 @@ input::-webkit-search-results-decoration {
 
     div:last-child {
       margin-left: 0 !important;
+      margin-right: auto !important;
     }
   }
 
   @mixin vertical-bar($pl: 0.25rem, $pr: 0.25rem) {
     content: "\007C";
-    padding-left: $pl;
+    padding-left: 0.6rem;
     padding-right: $pr;
   }
   
