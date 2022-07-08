@@ -399,6 +399,13 @@ img[data-src] {
   h1 {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
+
+    #category_folder {
+      @extend %cursor-pointer;
+      text-decoration-line: none !important;
+      border: none !important;
+      font-size: 1.25rem;
+    }
   }
 
   a {

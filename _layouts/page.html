@@ -20,10 +20,21 @@ layout: default
       {% endif %}
     {% endcapture %}
 
-    {% if page.layout == 'page' or page.collection == 'tabs'%}
-      {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+    {% if page.collection == "tabs"%}
       <h1 class="dynamic-title">
-        {{ title }}
+        {% assign title = page.title %}
+        {% case title %}
+          {% when "About Me" %}
+            <i class="fas fa-address-card fa-fw text-muted"></i> {{ title }}
+          {% when "Categories" %}
+            <i class="fas fa-folder-open fa-fw text-muted"></i> {{ title }}
+          {% when "Tags" %}
+            <i class="fas fa-tag fa-fw text-muted"></i> {{ title }}
+          {% when "Archives" %}
+            <i class="fas fa-history fa-fw text-muted"></i> {{ title }}
+          {% else %}
+            {{ title }}
+        {% endcase %}
       </h1>
       <div class="post-content">
         {{ _content }}

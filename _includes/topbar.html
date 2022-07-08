@@ -16,29 +16,68 @@
 
       {% for item in paths %}
 
-        {% if forloop.first %}
+        {% if forloop.first %} <!-- HOME -->
           <span>
             <a href="{{ '/' | relative_url }}">
               {{ site.data.locales[lang].tabs.home | capitalize }}
             </a>
           </span>
-
         {% elsif forloop.last %}
-
-          {% if page.collection == 'tabs' %}
+          {% if page.collection == 'tabs' %} <!-- if It's a tab -->
             <span>{{ site.data.locales[lang].tabs[item] | default: page.title }}</span>
-          {% else %}
-            <span>{{ page.title }}</span>
+          {% else %} <!-- Not tab (top, sub, tags, post) -->
+            {% if page.layout == 'category' %}
+
+              {% assign now_name = site.data.locales[lang].tabs[item] | default: page.title %}
+
+              {% assign sort_categories = site.categories | sort %}
+              
+              {% for category in sort_categories %}
+                {% assign category_name = category | first %}
+                {% assign posts_of_category = category | last %}
+                {% assign first_post = posts_of_category | first %}
+          
+                {% if category_name == first_post.categories[0] %}
+                  {% if category_name == now_name %} <!-- It's TOP category -->
+                    <span>{{ page.title }}</span>
+                  {% else %} <!-- It's SUB category -->
+
+                    {% assign find = false %}
+          
+                    {% for post in posts_of_category %}
+                      {% assign second_category = post.categories[1] %}
+          
+                      {% if second_category == now_name and find == false %}
+                          {% assign find = true %}
+
+                          <span> <!-- add TOP in front of SUB -->
+                            {% capture top_url %}/categories/{{ post.categories[0] | slugify | url_encode }}/{% endcapture %}  
+                            <a href="{{ top_url | relative_url }}">
+                              {{ post.categories[0] }}
+                            </a>
+                          </span>
+
+                          <span>{{ page.title }}</span> <!-- and SUB -->
+
+                      {% endif %}
+                    {% endfor %}
+
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+            {% else %}
+              <span>{{ page.title }}</span>
+            {% endif %}
           {% endif %}
 
-        {% elsif page.layout == 'category' or page.layout == 'tag' %}
+        {% elsif page.layout == 'category' or page.layout == 'tag' %} <!-- Middle -->
           <span>
             <a href="{{ item | relative_url }}">
               {{ site.data.locales[lang].tabs[item] | default: page.title }}
             </a>
           </span>
         {% endif %}
-
       {% endfor %}
 
     {% endif %}

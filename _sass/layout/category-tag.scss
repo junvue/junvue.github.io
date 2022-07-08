@@ -9,7 +9,7 @@
 
 #page-category,
 #page-tag {
-  ul > li {
+  #sub_category > li {
     line-height: 1.5rem;
     padding: 0.6rem 0;
 
@@ -55,10 +55,21 @@
   }
 }
 
+#top_category {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 33px;
+  padding-top: 7px;
+}
+
 @media all and (max-width: 576px) {
   #page-category,
   #page-tag {
-    ul > li {
+    #sub_category > li {
       &::before {
         margin: 0 0.5rem;
       }
