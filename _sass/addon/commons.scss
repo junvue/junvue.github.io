@@ -394,17 +394,19 @@ img[data-src] {
 }
 
 /* --- post --- */
+#category_folder {
+  @extend %cursor-pointer;
+  text-decoration-line: none !important;
+  border: none !important;
+}
 
 .post {
   h1 {
     margin-top: 3rem;
     margin-bottom: 1.5rem;
 
-    #category_folder {
-      @extend %cursor-pointer;
-      text-decoration-line: none !important;
-      border: none !important;
-      font-size: 1.25rem;
+    i {
+      font-size: 1.2rem;
     }
   }
 
@@ -460,10 +462,6 @@ img[data-src] {
   word-spacing: 1px;
 
   a {
-    &:not(:last-child) {
-      margin-right: 2px;
-    }
-
     &:not([class]):hover {
       @extend %link-hover;
     }
@@ -554,10 +552,9 @@ img[data-src] {
   display: inline-block;
   min-width: 2rem;
   text-align: center;
-  // background: var(--tag-bg);
-  // border-radius: 0.3rem;
   color: inherit;
   line-height: 1.3rem;
+  padding: 0.1rem 0.4rem;
 
   &:not(:last-child) {
     margin-right: 0.2rem;
@@ -565,16 +562,17 @@ img[data-src] {
 
   &:not(:hover) {
     background: rgb(240, 240, 240);
-    border-radius: 0.3rem;
+    border-radius: 0.8rem;
   }
 
   &:hover {
     @extend %tag-hover;
-
     text-decoration: none;
     color: rgb(80, 80, 80);
   }
 }
+
+
 
 /* --- buttons --- */
 .btn-lang {
@@ -1268,70 +1266,9 @@ input::-webkit-search-results-decoration {
       animation: popup 0.8s;
     }
   }
-
 }
 
 #share-notification {
-  @keyframes popup {
-    from {
-      opacity: 0;
-      bottom: 50;
-    }
-  }
-
-  .toast-header {
-    background: none;
-    border-bottom: none;
-    color: inherit;
-
-    span {
-      margin-left: auto;
-    }
-  }
-
-  .toast-body {
-    font-family: 'Lato';
-    line-height: 1.25rem;
-    color: inherit;
-
-    input {
-      width: 68%;
-      height: 2rem;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      white-space: nowrap;
-      font-size: 14px;
-      background-color: rgba(0, 0, 0, 0);
-    }
-
-    button {
-      font-size: 90%;
-      min-width: 3rem;
-      border-radius: unset !important;
-    }
-  }
-
-  &.toast {
-    display: none;
-
-    &.show {
-      display: block;
-      min-width: 20rem;
-      border-radius: 0.5rem;
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      background-color: rgba(255, 255, 255, 0.5);
-      color: #1b1b1eba;
-      position: fixed;
-      left: 50%;
-      bottom: 50%;
-      transform: translateX(-50%);
-      animation: popup 0.8s;
-    }
-  }
-}
-
-#toast {
   @keyframes popup {
     from {
       opacity: 0;
@@ -1360,6 +1297,7 @@ input::-webkit-search-results-decoration {
       bottom: 7%;
       transform: translateX(-50%);
       animation: popup 0.3s;
+      text-align: center;
     }
   }
 }

@@ -68,9 +68,10 @@ layout: compress
       </div>
     {% endif %}
 
-    <div id="toast" class="toast d-flex justify-content-center" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false">
-      <span id="toast_msg">{{ site.data.locales[lang].post.button.share_link.succeed }}</span>
+    <div id="share-notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false">
+      <span>{{ site.data.locales[lang].post.button.share_link.succeed }}</span>
     </div>
+    
     {% include search-loader.html %}
 
     {% include js-selector.html %}

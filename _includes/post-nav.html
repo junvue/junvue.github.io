@@ -15,14 +15,14 @@
 
   <!-- add list button -->
   {% if page.categories.size == 2 %}
-    {% assign prompt = page.categories[0] | append: "&#32;>&#32;" | append: page.categories[1] %}
+    {% assign prompt = page.categories[0] | append: "&#32;›&#32;" | append: page.categories[1] %}
     {% assign num = 1 %}
   {% else %}
     {% assign prompt = page.categories[0] %}
     {% assign num = 0 %}
   {% endif %}
   <a href="{{ site.baseurl }}/categories/{{ page.categories[num] | slugify | url_encode }}/" class="btn btn-outline-primary btn-list" prompt="{{ site.data.locales[lang].post.button.list }}">
-      <p><i class="far fa-folder-open fa-fw mr-1" aria-hidden="true"></i>{{ prompt }}</p>
+      <p><i class="far fa-folder-open fa-fw mr-1" aria-hidden="true"></i>› {{ prompt }}</p>
   </a>
 
   {% if page.next.url %}

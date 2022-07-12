@@ -142,7 +142,7 @@ $(function () {
   }
 
   /* for share btn */
-  const $toast = $('#toast');
+  const $toast = $('#share-notification');
   const $btnShare = $('#share_btn');
   const url = window.location.href;
 
@@ -150,6 +150,7 @@ $(function () {
   $btnShare.click(() => {
     navigator.clipboard.writeText(url)
     .then(() => {
+      console.log("ㅎㅇ");
       $toast.toast('show');
 
       setTimeout(function() { $toast.toast('hide'); }, 3000);

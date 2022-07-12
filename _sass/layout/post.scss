@@ -51,11 +51,11 @@ img.preview-img {
 
 .post-tail-wrapper {
   margin-top: 4rem;
-  border-bottom: 1px double var(--main-border-color);
   font-size: 0.85rem;
+  border-bottom: 1px double var(--main-border-color);
 
   > div:first-child {
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -267,7 +267,7 @@ nav[data-toggle=toc] {
   color: inherit;
 }
 
-%btn-share-hovor {
+%btn-share-hover {
   color: var(--btn-share-hover-color) !important;
 }
 
@@ -278,6 +278,7 @@ nav[data-toggle=toc] {
   padding: 0rem 0.35rem;
   border-radius: 0.8rem;
   @extend %cursor-pointer;
+  width: 5rem;
 
   &:hover {
     background-color: var(--btn-border-color);
@@ -326,11 +327,6 @@ nav[data-toggle=toc] {
   .post-tail-bottom {
     -ms-flex-wrap: wrap-reverse !important;
     flex-wrap: wrap-reverse !important;
-
-    > div:first-child {
-      // width: 100%;
-      margin-top: 1rem;
-    }
   }
 }
 
