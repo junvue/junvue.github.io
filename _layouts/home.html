@@ -70,7 +70,7 @@ layout: page
           <span>
           {% for category in post.categories %}
             {{ category }}
-            {%- unless forloop.last -%}&#32;>{%- endunless -%}
+            {%- unless forloop.last -%}&#32;&#8250;{%- endunless -%}
           {% endfor %}
           </span>
         {% endif %}
