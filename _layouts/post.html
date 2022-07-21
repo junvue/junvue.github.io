@@ -20,13 +20,6 @@ tail_includes:
       {% include datetime.html date=page.date tooltip=true %}
     </span>
 
-    <!-- lastmod date -->
-    {% if page.last_modified_at %}
-    <span id="last_modifed">{{ site.data.locales[lang].post.updated }}
-      {% include datetime.html date=page.last_modified_at tooltip=true %}
-    </span>
-    {% endif %}
-
     <div>
       <!-- page views -->
       {% if site.google_analytics.pv.proxy_endpoint or site.google_analytics.pv.cache_path %}<span>{{ site.data.locales[lang].post.pageview_measure }}
