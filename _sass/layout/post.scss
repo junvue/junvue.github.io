@@ -319,17 +319,6 @@ nav[data-toggle=toc] {
 
 } /* .license-wrapper */
 
-@media all and (max-width: 576px) {
-  .preview-img[data-src] {
-    margin-top: 2.2rem;
-  }
-
-  .post-tail-bottom {
-    -ms-flex-wrap: wrap-reverse !important;
-    flex-wrap: wrap-reverse !important;
-  }
-}
-
 @media all and (max-width: 768px) {
   .post-content > p > img {
     max-width: calc(100% + 1rem);

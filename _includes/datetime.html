@@ -10,12 +10,13 @@
   {% assign df_dayjs = 'll' %}
 {% else %}
   {% assign df_strftime = '%F' %}
-  {% assign df_dayjs = 'YYYY-MM-DD' %}
+  {% assign df_dayjs = 'YYYY. MM. DD. HH:mm' %}
 {% endif %}
+
+
 
 <{{ wrap_elem }} class="{% if include.class %}{{ include.class }}{% endif %}"
     data-ts="{{ include.date | date: '%s' }}"
-    data-df="{{ df_dayjs }}"
-    {% if include.tooltip %}data-toggle="tooltip" data-placement="bottom"{% endif %}>
+    data-df="{{ df_dayjs }}">
   {{ include.date | date: df_strftime }}
 </{{ wrap_elem }}>

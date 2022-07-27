@@ -1311,10 +1311,19 @@ input::-webkit-search-results-decoration {
 
 */
 
-@media all and (max-width: 470px) {
-  #last_modifed {
+@media all and (max-width: 420px) {
+  .post-meta {
+    div:last-child {
+      margin-left: auto !important;
+    }
+  }
+
+  .readtime {
     display: none;
   }
+}
+
+@media all and (min-width: 420px) and (max-width: 470px) {
   .post-meta {
     -ms-flex-pack:start !important;
     justify-content:start !important;
